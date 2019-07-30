@@ -12,7 +12,17 @@ data class Crime(
         var context: String? = null,
         @SerializedName("outcome_status") var outcome: Outcome? = null,
         @SerializedName("persistent_id") var persistentId: String? = null,
-        var id: Int? = null,
+        var id: String? = null,
         @SerializedName("location_subtype") var locationSubtype: String? = null,
         var month: String? = null
-) : Parcelable
+) : Parcelable {
+    fun getLocationName(): String? {
+        if (location != null) {
+            val street = location!!.street
+            if (street != null) {
+                return street.name
+            }
+        }
+        return null
+    }
+}

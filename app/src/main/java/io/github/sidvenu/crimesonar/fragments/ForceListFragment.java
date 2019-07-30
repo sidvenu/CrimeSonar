@@ -10,28 +10,28 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
-
 import io.github.sidvenu.crimesonar.ForcesActivity;
 import io.github.sidvenu.crimesonar.R;
 import io.github.sidvenu.crimesonar.adapters.ForceListAdapter;
-import io.github.sidvenu.crimesonar.models.Force;
 
 public class ForceListFragment extends Fragment {
     private RecyclerView recyclerView;
+    private ForceListAdapter forceListAdapter = null;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (getActivity() instanceof ForcesActivity) {
-            recyclerView = (RecyclerView) inflater.inflate(R.layout.list_force, container, false);
+            recyclerView = (RecyclerView) inflater.inflate(R.layout.force_list_fragment, container, false);
+            recyclerView.setAdapter(((ForcesActivity) getActivity()).forceListAdapter);
             return recyclerView;
         }
         return null;
     }
 
-    public void setRecyclerViewAdapter(ForceListAdapter forceListAdapter) {
-        recyclerView.setAdapter(forceListAdapter);
-    }
+//    public void setRecyclerViewAdapter(ForceListAdapter forceListAdapter) {
+//        this.forceListAdapter = forceListAdapter;
+//        recyclerView.setAdapter(forceListAdapter);
+//    }
 
 }

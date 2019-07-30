@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/crime_detail_category"
+        style="@style/BigTitleTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Violent Crime" />
+
+    <TextView
+        android:id="@+id/crime_detail_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@id/crime_detail_category"
+        tools:text="# 54726925" />
+
+    <ImageView
+        android:id="@+id/crime_detail_location_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_location_24dp"
+        android:tint="@color/colorPrimaryDark"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/crime_detail_id" />
+
+    <TextView
+        android:id="@+id/crime_detail_location"
+        style="@style/TitleTheme"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/crime_detail_location_icon"
+        app:layout_constraintLeft_toRightOf="@id/crime_detail_location_icon"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/crime_detail_location_icon"
+        tools:text="On or near Abbey Gate" />
+
+    <TextView
+        android:id="@+id/location_type_prefix"
+        style="@style/TitleTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Location Type:"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/crime_detail_location" />
+
+    <TextView
+        android:id="@+id/crime_detail_location_type"
+        style="@style/TitleTheme"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintLeft_toRightOf="@id/location_type_prefix"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/location_type_prefix"
+        tools:text="Force" />
+
+    <TextView
+        android:id="@+id/lat_prefix"
+        style="@style/TitleTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Latitude:"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/crime_detail_location_type" />
+
+    <TextView
+        android:id="@+id/crime_detail_lat"
+        style="@style/TitleTheme"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintLeft_toRightOf="@id/lat_prefix"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/lat_prefix"
+        tools:text="52.629729" />
+
+    <TextView
+        android:id="@+id/lng_prefix"
+        style="@style/TitleTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Longitude:"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/crime_detail_lat" />
+
+    <TextView
+        android:id="@+id/crime_detail_lng"
+        style="@style/TitleTheme"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintLeft_toRightOf="@id/lng_prefix"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/lng_prefix"
+        tools:text="-1.131592" />
+
+    <TextView
+        android:id="@+id/outcome_prefix"
+        style="@style/TitleTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Outcome:"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lng_prefix" />
+
+    <TextView
+        android:id="@+id/crime_detail_outcome"
+        style="@style/TitleTheme"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintLeft_toRightOf="@id/outcome_prefix"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/outcome_prefix"
+        tools:text="Unable to prosecute suspect" />
+
+    <TextView
+        android:id="@+id/outcome_date_prefix"
+        style="@style/TitleTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Outcome Date:"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/crime_detail_outcome" />
+
+    <TextView
+        android:id="@+id/crime_detail_outcome_date"
+        style="@style/TitleTheme"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintLeft_toRightOf="@id/outcome_date_prefix"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/outcome_date_prefix"
+        tools:text="2017-02" />
+
+    <TextView
+        android:id="@+id/notes_prefix"
+        style="@style/TitleTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Notes:"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/crime_detail_outcome_date" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/notes_prefix">
+
+        <TextView
+            android:id="@+id/crime_detail_notes"
+            style="@style/TitleTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="100"
+            android:text="No notes" />
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

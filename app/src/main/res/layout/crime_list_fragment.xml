@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/location_choose_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/ic_location_24dp"
+        app:layout_constraintBottom_toBottomOf="@id/longitude_prefix"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/latitude_prefix" />
+
+    <TextView
+        android:id="@+id/latitude_prefix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Lat: "
+        android:textColor="@android:color/white"
+        app:layout_constraintLeft_toRightOf="@id/location_choose_icon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/latitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="@android:color/white"
+        app:layout_constraintLeft_toRightOf="@id/latitude_prefix"
+        app:layout_constraintTop_toTopOf="@id/latitude_prefix"
+        android:text="@string/default_lat" />
+
+
+    <TextView
+        android:id="@+id/longitude_prefix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Lon: "
+        android:textColor="@android:color/white"
+        app:layout_constraintLeft_toRightOf="@id/location_choose_icon"
+        app:layout_constraintTop_toBottomOf="@id/latitude_prefix" />
+
+    <TextView
+        android:id="@+id/longitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        app:layout_constraintLeft_toLeftOf="@id/latitude"
+        app:layout_constraintTop_toTopOf="@id/longitude_prefix"
+        android:text="@string/default_lng" />
+
+    <ImageView
+        android:id="@+id/date_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/ic_date_range_24dp"
+        android:tint="@android:color/white"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@id/date_icon"
+        app:layout_constraintRight_toLeftOf="@id/date_icon"
+        app:layout_constraintTop_toTopOf="@id/date_icon"
+        android:text="@string/default_date" />
+
+    <View
+        android:id="@+id/date_selector"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/date_icon"
+        app:layout_constraintLeft_toLeftOf="@id/date"
+        app:layout_constraintRight_toRightOf="@id/date_icon"
+        app:layout_constraintTop_toTopOf="@id/date_icon" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/crime_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:clipToPadding="false"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/longitude_prefix" />
+</androidx.constraintlayout.widget.ConstraintLayout>

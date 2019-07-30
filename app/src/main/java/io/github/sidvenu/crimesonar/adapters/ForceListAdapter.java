@@ -1,7 +1,8 @@
 package io.github.sidvenu.crimesonar.adapters;
 
-import android.text.Html;
-import android.text.TextUtils;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,23 +10,32 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.sidvenu.crimesonar.Constants;
+import io.github.sidvenu.crimesonar.ForcesActivity;
 import io.github.sidvenu.crimesonar.R;
+import io.github.sidvenu.crimesonar.Utils;
 import io.github.sidvenu.crimesonar.models.Force;
 
 public class ForceListAdapter extends RecyclerView.Adapter<ForceListAdapter.ForceListViewHolder> {
 
-    List<Force> forceList;
+    public List<Force> forceList;
+    ForcesActivity forcesActivity;
 
-    public ForceListAdapter(List<Force> forceList) {
+    public ForceListAdapter(ForcesActivity forcesActivity, List<Force> forceList) {
+        this.forcesActivity = forcesActivity;
         this.forceList = forceList;
     }
 
@@ -55,8 +65,7 @@ public class ForceListAdapter extends RecyclerView.Adapter<ForceListAdapter.Forc
     private void initialiseViewsInForceItem(@NonNull ForceListViewHolder holder, int position) {
         Force force = forceList.get(position);
         holder.forceName.setText(force.getName());
-        if (!TextUtils.isEmpty(force.getDescription()))
-            holder.forceDescription.setText(Html.fromHtml(force.getDescription()));
+        holder.forceDescription.setText(Utils.getHtmlString(force.getDescription()));
         String forceImageURL = getForceImageURLFromEngagementMethods(force.getEngagementMethods());
         loadImageIntoViewFromURL(holder.forceImage, forceImageURL);
     }
@@ -65,6 +74,18 @@ public class ForceListAdapter extends RecyclerView.Adapter<ForceListAdapter.Forc
         Glide.with(forceImage.getContext())
                 .load(forceImageURL)
                 .thumbnail(0.1f)
+                .addListener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        return false;
+                    }
+                })
+                .error(R.drawable.police_image_not_found_padded)
                 .into(forceImage);
     }
 
@@ -105,7 +126,7 @@ public class ForceListAdapter extends RecyclerView.Adapter<ForceListAdapter.Forc
         return null;
     }
 
-    public static class ForceListViewHolder extends RecyclerView.ViewHolder {
+    public class ForceListViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.force_image)
         ImageView forceImage;
 
@@ -118,6 +139,34 @@ public class ForceListAdapter extends RecyclerView.Adapter<ForceListAdapter.Forc
         public ForceListViewHolder(View forceItem) {
             super(forceItem);
             ButterKnife.bind(this, forceItem);
+            forceItem.setOnClickListener(v -> {
+                int position = getAdapterPosition();
+                showForceDetailFragment(forceList.get(position), getBitmapFromImageView(forceImage));
+            });
         }
+    }
+
+    private Bitmap getBitmapFromImageView(ImageView imageView) {
+//        try {
+//            return Glide.with(forcesActivity)
+//                    .asBitmap()
+//                    .load(imageView)
+//                    .submit()
+//                    .get();
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+        Drawable drawable = imageView.getDrawable();
+        if (drawable instanceof BitmapDrawable) {
+            return ((BitmapDrawable) drawable).getBitmap();
+        }
+        return null;
+    }
+
+    private void showForceDetailFragment(Force force, Bitmap bitmap) {
+        forcesActivity.showForceDetail(force, bitmap);
     }
 }

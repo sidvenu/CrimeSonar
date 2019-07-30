@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/force_detail_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/police_image_not_found_padded"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHeight_percent=".25"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/force_detail_name"
+        style="@style/BigTitleTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/force_detail_image"
+        tools:text="Force Title Title TItle tiTlet etIT lTit lTi" />
+
+
+    <ImageView
+        android:id="@+id/force_detail_phone_image"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_phone_android_24dp"
+        android:tint="@android:color/holo_orange_dark"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/force_detail_name" />
+
+    <TextView
+        android:id="@+id/force_detail_phone"
+        style="@style/PhoneNumberForceDetailTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintBottom_toBottomOf="@id/force_detail_phone_image"
+        app:layout_constraintLeft_toRightOf="@id/force_detail_phone_image"
+        app:layout_constraintTop_toTopOf="@id/force_detail_phone_image"
+        tools:text="+43943483983" />
+
+
+    <ImageView
+        android:id="@+id/force_detail_web_image"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_info_black_24dp"
+        android:tint="@android:color/holo_orange_dark"
+        app:layout_constraintRight_toLeftOf="@id/force_detail_web"
+        app:layout_constraintTop_toBottomOf="@id/force_detail_name" />
+
+    <TextView
+        android:id="@+id/force_detail_web"
+        style="@style/PhoneNumberForceDetailTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:linksClickable="true"
+        android:textColorLink="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="@id/force_detail_phone_image"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/force_detail_phone_image"
+        tools:text="sidvenu.ml" />
+
+    <TextView
+        android:id="@+id/force_detail_description_title"
+        style="@style/TitleTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="About Us"
+        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@id/force_detail_phone_image" />
+
+    <!--<androidx.constraintlayout.widget.Guideline-->
+    <!--android:id="@+id/three_fourths"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:orientation="horizontal"-->
+    <!--app:layout_constraintGuide_percent="0.75" />-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/force_detail_description_title">
+
+        <TextView
+            android:id="@+id/force_detail_description"
+            style="@style/DescriptionTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="100"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
